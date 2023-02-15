@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Todo } from "./model";
 
 interface Props {
@@ -7,6 +7,7 @@ interface Props {
 }
 
 function InputField({ todos, setTodos }: Props) {
+  const inputRef = useRef<HTMLInputElement>(null);
   const [content, setContent] = useState<string>("");
 
   const handleAddTodo = (e: React.FormEvent) => {
@@ -22,11 +23,13 @@ function InputField({ todos, setTodos }: Props) {
 
     setTodos([...todos, todo]);
     setContent(() => "");
+    inputRef.current?.blur();
   };
 
   return (
     <form className="input" onSubmit={handleAddTodo}>
       <input
+        ref={inputRef}
         type="input"
         placeholder="Enter a task"
         className="input__box"
