@@ -1,10 +1,5 @@
 import { useRef, useState } from "react";
-import { Todo } from "./model";
-
-interface Props {
-  todos: Todo[];
-  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
-}
+import { Props, Todo } from "./model";
 
 function InputField({ todos, setTodos }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
