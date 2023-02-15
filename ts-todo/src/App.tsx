@@ -10,7 +10,6 @@ function App() {
   return (
     <div className="App">
       <span className="heading">Taskify</span>
-
       <InputField todos={todos} setTodos={setTodos} />
     </div>
   );

@@ -12,13 +12,16 @@ function InputField({ todos, setTodos }: Props) {
   const handleAddTodo = (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (!content) return;
+
     const todo: Todo = {
-      id: Number(new Date()),
+      id: Date.now(),
       content,
       isDone: false,
     };
 
     setTodos([...todos, todo]);
+    setContent(() => "");
   };
 
   return (
@@ -27,6 +30,7 @@ function InputField({ todos, setTodos }: Props) {
         type="input"
         placeholder="Enter a task"
         className="input__box"
+        value={content}
         onChange={(e) => setContent(e.target.value)}
       />
       <button className="input__submit">Go</button>
